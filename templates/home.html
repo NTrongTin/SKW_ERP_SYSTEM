@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}SKW ERP SYSTEM-HOME{% endblock %}
+
+{% block content %}
+    <h1>HOME</h1>
+    <p>
+      Welcome back {{ request.user.first_name }} {{ request.user.last_name }}.
+    </p>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}SKW ERP SYSTEM-HOME{% endblock %}
+
+{% block content %}
+    <h1>WORK TIME SHEET</h1>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+						<th scope="col">Date</th>
+						<th scope="col">Task Code</th>
+						<th scope="col">Work Code</th>
+						<th scope="col">Start Time</th>
+						<th scope="col">End Time</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Middle</th>
+                        <th scope="col">Last</th>
+                    </tr>
+                </thead>
+                <tbody>
+				{% for work_time in current_month_work_time %}
+				    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+						<td>{{ work_time.date|date:"Y-m-d (D)" }}</td>
+						<td>{{ work_time.project.code }}</td>
+						<td>{{ work_time.work_code.code }}</td>
+						<td>{{ work_time.start_time|date:"H:i" }}</td>
+						<td>{{ work_time.end_time|date:"H:i" }}</td>
+                        <td>{{ work_time.employee.first_name }}</td>
+                        <td>{{ work_time.employee.middle_name }}</td>
+                        <td>{{ work_time.employee.last_name }}</td>
+                    </tr>
+				{% endfor %}
+<!-- 				
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Nguyen</td>
+                        <td>Trong</td>
+                        <td>Tin</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Pham</td>
+                        <td>Ngoc Thien</td>
+                        <td>Duc</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Giang</td>
+                        <td>Nhat</td>
+                        <td>Nam</td>
+                    </tr>
+-->					
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
